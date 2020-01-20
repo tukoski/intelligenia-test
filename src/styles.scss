@@ -1,1 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
+/* Colors */
+$colors: (
+  primary: white,
+  secondary: rgba(0, 0, 0, 0.8),
+  red: red
+);
+/* Classes are generated from the colors */
+@each $name, $color in $colors {
+  .#{$name}-bg {
+    background-color: $color;
+  }
+  .#{$name} {
+    color: $color;
+  }
+}
+
+body {
+  background-color: map-get($colors, secondary);
+  padding: 10px 20px;
+  margin: 0;
+}
+
+h1, p, pre {
+  font-family: -apple-system, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+h1, pre {
+  color: map-get($colors, primary);
+}
+
+input {
+  border: 1px solid map-get($colors, primary);
+  outline: none;
+  padding: 5px;
+  font-size: 13px;
+}

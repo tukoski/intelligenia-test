@@ -20,16 +20,15 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'intelligenia-test'`, () => {
+  it('should have 10 hashtag', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('intelligenia-test');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('intelligenia-test app is running!');
-  });
+    
+    app.drawStaircase(4);
+    fixture.detectChanges();
+    let preText = compiled.querySelector("pre").textContent;
+    preText = preText.split("#").length-1;
+    expect(preText).toEqual(10);
+  })
 });
